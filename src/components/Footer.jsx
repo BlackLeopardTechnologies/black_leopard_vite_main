@@ -54,9 +54,9 @@ const Footer = () => {
 <div class="share">
 {/* <a href="#" class="fab fa-facebook"></a> */}
 {/* <a href="#" class="fab fa-twitter"></a> */}
-<a href="https://www.instagram.com/blackleopardtech" class="fab fa-instagram"></a>
-<a href="https://www.linkedin.com/company/blackleopard-technologies-limited" class="fab fa-linkedin"></a>
-<a href="https://www.tiktok.com/@blackleopardtech" class="fab fa-tiktok"></a>
+<a href="https://www.instagram.com/blackleopardtech" class="fab fa-instagram" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.linkedin.com/company/blackleopard-technologies-limited" class="fab fa-linkedin" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.tiktok.com/@blackleopardtech" class="fab fa-tiktok" target="_blank" rel="noopener noreferrer"></a>
 
 </div>
 
