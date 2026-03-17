@@ -1260,8 +1260,11 @@ section{
 }
 
 
-.newsletter{
-    background: url(/images/business-accountant.jpg) ;
+
+
+
+.newsletter {
+    background-image: url(/images/business-accountant.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1885,9 +1888,6 @@ display: flex;
             font-size: 3.5rem;
         }
 
-        .newsletter{
-            background-position: right;
-        }
         .newsletter form{
         margin-left: 0;
         width: 100%;
