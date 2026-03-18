@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ onOpenCookieSettings }) => {
     return(
         <>
             
@@ -33,11 +33,18 @@ const Footer = () => {
    <div class="box">
     <h3>Cookies</h3>
     <ul>
-        <li>We may use cookies to improve your experience</li>
-        <li>Cookies help us remember your preferences</li>
-        <li>You can disable cookies in your browser settings</li>
-        <li>Some features may not work properly without cookies</li>
+        <li>Necessary cookies keep the website secure and working properly</li>
+        <li>Optional cookies stay off until you accept them</li>
+        <li>You can update your choices at any time from this footer</li>
+        <li>Rejecting optional cookies will not block access to the site</li>
     </ul>
+    <button
+        type="button"
+        className="footer-cookie-button"
+        onClick={onOpenCookieSettings}
+    >
+        Cookie settings
+    </button>
 
 </div>
 
