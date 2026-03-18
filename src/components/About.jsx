@@ -67,13 +67,18 @@ const About = () => {
           <article className="vision-card">
             <h3>Vision Statement</h3>
             <p>
-              To be a leading technology partner across Africa, enabling organizations with dependable and future-ready digital solutions.
+              To be the leading technology solutions provider across Africa, driving digital transformation and
+              empowering businesses with innovative technology that creates sustainable growth, operational excellence,
+              and competitive advantage in an increasingly digital world. 
             </p>
           </article>
           <article className="mission-card">
             <h3>Mission Statement</h3>
             <p>
-              We provide practical technology services that improve productivity, strengthen security, and drive sustainable growth.
+             We deliver cutting-edge technology solutions, products, and services that enable our clients to optimize their
+            operations, enhance productivity, and achieve their business objectives. Through our commitment to
+            excellence, innovation, and exceptional customer service, we bridge the technology gap and foster digital
+            advancement across Ghana and Africa, one client at a time. 
             </p>
           </article>
         </div>
