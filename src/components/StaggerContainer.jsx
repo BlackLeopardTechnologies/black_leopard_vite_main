@@ -27,7 +27,7 @@ const StaggerContainer = ({
         }
       },
       {
-        threshold: 0.1,
+        threshold: 0.2,
         rootMargin: "0px 0px -100px 0px"
       }
     );
@@ -92,34 +92,40 @@ const StaggerContainer = ({
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
+      // initial="hidden"
+      initial={false}
       animate={isVisible ? "visible" : "hidden"}
       variants={containerVariants}
       className={className}
       style={{
-        willChange: "transform, opacity",
-        backfaceVisibility: "hidden",
-        WebkitBackfaceVisibility: "hidden",
-        transform: "translateZ(0)",
-        WebkitTransform: "translateZ(0)",
-        transformStyle: "preserve-3d",
-        WebkitTransformStyle: "preserve-3d"
+        willChange: "opacity",
+        // willChange: "transform, opacity",
+        // backfaceVisibility: "hidden",
+        // WebkitBackfaceVisibility: "hidden",
+        // transform: "translateZ(0)",
+        // WebkitTransform: "translateZ(0)",
+        // transformStyle: "preserve-3d",
+        // WebkitTransformStyle: "preserve-3d"
       }}
     >
       {React.Children.map(children, (child) => (
         <motion.div
           variants={itemVariants}
           style={{
-            willChange: "transform, opacity",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            transform: "translateZ(0)",
-            WebkitTransform: "translateZ(0)",
-            transformStyle: "preserve-3d",
-            WebkitTransformStyle: "preserve-3d"
+              transform: "translate3d(0,0,0)",
+              backfaceVisibility: "hidden"
+            // willChange: "transform, opacity",
+            // backfaceVisibility: "hidden",
+            // WebkitBackfaceVisibility: "hidden",
+            // transform: "translateZ(0)",
+            // WebkitTransform: "translateZ(0)",
+            // transformStyle: "preserve-3d",
+            // WebkitTransformStyle: "preserve-3d"
           }}
         >
+          <div className="motion-inner">
           {child}
+          </div>
         </motion.div>
       ))}
     </motion.div>

@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,100&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300&family=Poppins:wght@100;300;400;600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
 :root{
     --green: #27ae60;
@@ -1440,8 +1444,12 @@ section{
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
+  /* transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d; */
+}
+
+.motion-inner {
+  backface-visibility: hidden;
 }
 
 .project-card:hover {
