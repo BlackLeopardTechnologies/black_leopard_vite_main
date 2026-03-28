@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const StaggerContainer = ({
   children,
   staggerDelay = 0.15,
+  mobileChildReveal = false,
   className = ""
 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,30 +45,32 @@ const StaggerContainer = ({
     };
   }, []);
 
+  const resolvedStaggerDelay = isMobile ? Math.min(staggerDelay * 0.35, 0.08) : staggerDelay;
+  const delayChildren = isMobile ? 0.04 : 0.2;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: staggerDelay,
-        delayChildren: 0.2,
-        ease: "easeOut"
+        staggerChildren: resolvedStaggerDelay,
+        delayChildren,
+        ease: isMobile ? "easeIn" : "easeOut"
       }
     }
   };
 
-  // Different animations for mobile vs desktop
   const mobileItemVariants = {
     hidden: {
-      opacity: 0,
-      x: -40
+      opacity: mobileChildReveal ? 1 : 0,
+      y: mobileChildReveal ? 0 : 18
     },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
-        duration: 0.7,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        duration: mobileChildReveal ? 0.16 : 0.34,
+        ease: "easeIn"
       }
     }
   };
@@ -112,19 +115,20 @@ const StaggerContainer = ({
         <motion.div
           variants={itemVariants}
           style={{
-              transform: "translate3d(0,0,0)",
-              backfaceVisibility: "hidden"
-            // willChange: "transform, opacity",
-            // backfaceVisibility: "hidden",
-            // WebkitBackfaceVisibility: "hidden",
-            // transform: "translateZ(0)",
-            // WebkitTransform: "translateZ(0)",
-            // transformStyle: "preserve-3d",
-            // WebkitTransformStyle: "preserve-3d"
+            transform: "translate3d(0,0,0)",
+            backfaceVisibility: "hidden"
           }}
         >
-          <div className="motion-inner">
-          {child}
+          <div
+            className={[
+              "motion-inner",
+              isMobile && mobileChildReveal ? "motion-inner--mobile-stagger" : "",
+              isMobile && isVisible && mobileChildReveal ? "is-visible" : ""
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {child}
           </div>
         </motion.div>
       ))}

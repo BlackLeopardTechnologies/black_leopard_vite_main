@@ -20,7 +20,7 @@ const Projects = () => {
                 </div>
             </ScrollReveal>
 
-            <StaggerContainer staggerDelay={0.22}>
+            <StaggerContainer staggerDelay={0.22} mobileChildReveal>
                 <div className="project-grid">
                     {projects.map((project) => (
                         <div key={project.id} className="project-card">

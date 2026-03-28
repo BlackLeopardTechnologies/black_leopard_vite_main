@@ -14,12 +14,14 @@ const ScrollReveal = ({
   const ref = useRef(null);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     const mobile = window.innerWidth <= 768;
-    setIsMobile(mobile);
-    if (mobile) {
-      setIsVisible(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -28,8 +30,8 @@ const ScrollReveal = ({
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px"
+        threshold: mobile ? 0.14 : 0.1,
+        rootMargin: mobile ? "0px 0px -40px 0px" : "0px 0px -100px 0px"
       }
     );
 
@@ -38,45 +40,45 @@ const ScrollReveal = ({
     }
 
     return () => {
+      window.removeEventListener("resize", checkMobile);
       if (ref.current) {
         observer.unobserve(ref.current);
       }
     };
   }, []);
 
+  const resolvedDelay = isMobile ? Math.min(delay * 0.2, 0.14) : delay;
+  const resolvedDuration = isMobile ? Math.min(duration, 0.34) : duration;
+  const resolvedDistance = isMobile ? Math.min(distance, 20) : distance;
+  const resolvedEase = isMobile ? "easeIn" : "easeInOut";
+
   const variants = {
     hidden: {
       opacity: 0,
-      y: direction === "up" ? distance : direction === "down" ? -distance : 0,
-      x: direction === "left" ? distance : direction === "right" ? -distance : 0,
+      y:
+        direction === "up"
+          ? resolvedDistance
+          : direction === "down"
+            ? -resolvedDistance
+            : 0,
+      x:
+        direction === "left"
+          ? resolvedDistance
+          : direction === "right"
+            ? -resolvedDistance
+            : 0,
     },
     visible: {
       opacity: 1,
       y: 0,
       x: 0,
       transition: {
-        duration,
-        delay,
-        ease: "easeInOut"
+        duration: resolvedDuration,
+        delay: resolvedDelay,
+        ease: resolvedEase
       }
     }
   };
-
-  if (isMobile) {
-    return (
-      <div
-        ref={ref}
-        className={className}
-        style={{
-          opacity: 1,
-          transform: "none",
-          willChange: "auto"
-        }}
-      >
-        {children}
-      </div>
-    );
-  }
 
   return (
     <motion.div

@@ -1452,6 +1452,48 @@ section{
   backface-visibility: hidden;
 }
 
+@keyframes mobile-card-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.8rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width:768px) {
+  .motion-inner--mobile-stagger > * > * {
+    opacity: 0;
+    transform: translate3d(0, 1.8rem, 0);
+  }
+
+  .motion-inner--mobile-stagger.is-visible > * > * {
+    animation: mobile-card-reveal 0.36s ease-in forwards;
+  }
+
+  .motion-inner--mobile-stagger.is-visible > * > *:nth-child(2) {
+    animation-delay: 0.06s;
+  }
+
+  .motion-inner--mobile-stagger.is-visible > * > *:nth-child(3) {
+    animation-delay: 0.12s;
+  }
+
+  .motion-inner--mobile-stagger.is-visible > * > *:nth-child(4) {
+    animation-delay: 0.18s;
+  }
+
+  .motion-inner--mobile-stagger.is-visible > * > *:nth-child(5) {
+    animation-delay: 0.24s;
+  }
+
+  .motion-inner--mobile-stagger.is-visible > * > *:nth-child(6) {
+    animation-delay: 0.3s;
+  }
+}
+
 .project-card:hover {
   transform: translateY(-6px);
 }

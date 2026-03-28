@@ -112,7 +112,7 @@ const About = () => {
               <h2 className="section-title">Our Core Values</h2>
             </ScrollReveal>
           </div>
-          <StaggerContainer staggerDelay={0.25}>
+          <StaggerContainer staggerDelay={0.25} mobileChildReveal>
             <div className="values-grid">
               {coreValues.map((value) => (
                 <article key={value.title} className="value-card">
