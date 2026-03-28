@@ -10,9 +10,17 @@ const ScrollReveal = ({
   className = ""
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
+    const mobile = window.innerWidth <= 768;
+    setIsMobile(mobile);
+    if (mobile) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -53,6 +61,22 @@ const ScrollReveal = ({
       }
     }
   };
+
+  if (isMobile) {
+    return (
+      <div
+        ref={ref}
+        className={className}
+        style={{
+          opacity: 1,
+          transform: "none",
+          willChange: "auto"
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
