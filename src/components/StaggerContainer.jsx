@@ -49,7 +49,7 @@ const StaggerContainer = ({
   const delayChildren = isMobile ? 0.04 : 0.2;
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: isMobile && mobileChildReveal ? 1 : 0 },
     visible: {
       opacity: 1,
       transition: {
@@ -95,29 +95,14 @@ const StaggerContainer = ({
   return (
     <motion.div
       ref={ref}
-      // initial="hidden"
       initial={false}
       animate={isVisible ? "visible" : "hidden"}
       variants={containerVariants}
       className={className}
-      style={{
-        willChange: "opacity",
-        // willChange: "transform, opacity",
-        // backfaceVisibility: "hidden",
-        // WebkitBackfaceVisibility: "hidden",
-        // transform: "translateZ(0)",
-        // WebkitTransform: "translateZ(0)",
-        // transformStyle: "preserve-3d",
-        // WebkitTransformStyle: "preserve-3d"
-      }}
     >
       {React.Children.map(children, (child) => (
         <motion.div
           variants={itemVariants}
-          style={{
-            transform: "translate3d(0,0,0)",
-            backfaceVisibility: "hidden"
-          }}
         >
           <div
             className={[

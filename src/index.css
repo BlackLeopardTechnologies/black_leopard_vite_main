@@ -25,8 +25,6 @@ body {
     border: none;
     text-decoration: none;
     text-transform: none;
-    transition: all .2s linear;
-    transition: width none;
 }
 
 html{
@@ -1455,18 +1453,18 @@ section{
 @keyframes mobile-card-reveal {
   from {
     opacity: 0;
-    transform: translate3d(0, 1.8rem, 0);
+    transform: translateY(1.8rem);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translateY(0);
   }
 }
 
 @media (max-width:768px) {
   .motion-inner--mobile-stagger > * > * {
     opacity: 0;
-    transform: translate3d(0, 1.8rem, 0);
+    transform: translateY(1.8rem);
   }
 
   .motion-inner--mobile-stagger.is-visible > * > * {
