@@ -61,6 +61,15 @@ const ScrollReveal = ({
       animate={isVisible ? "visible" : "hidden"}
       variants={variants}
       className={className}
+      style={{
+        willChange: "transform, opacity",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        transform: "translateZ(0)",
+        WebkitTransform: "translateZ(0)",
+        transformStyle: "preserve-3d",
+        WebkitTransformStyle: "preserve-3d"
+      }}
     >
       {children}
     </motion.div>

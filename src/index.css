@@ -1429,11 +1429,19 @@ section{
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform .3s;
+  transition: box-shadow 0.3s ease;
 
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .project-card:hover {

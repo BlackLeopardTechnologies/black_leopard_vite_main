@@ -60,13 +60,11 @@ const StaggerContainer = ({
   const mobileItemVariants = {
     hidden: {
       opacity: 0,
-      x: -50, // Slide from left on mobile
-      scale: 0.9
+      x: -40
     },
     visible: {
       opacity: 1,
       x: 0,
-      scale: 1,
       transition: {
         duration: 0.7,
         ease: [0.25, 0.46, 0.45, 0.94]
@@ -77,15 +75,13 @@ const StaggerContainer = ({
   const desktopItemVariants = {
     hidden: {
       opacity: 0,
-      y: 30,
-      scale: 0.95
+      y: 30
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.65,
         ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
@@ -100,9 +96,29 @@ const StaggerContainer = ({
       animate={isVisible ? "visible" : "hidden"}
       variants={containerVariants}
       className={className}
+      style={{
+        willChange: "transform, opacity",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        transform: "translateZ(0)",
+        WebkitTransform: "translateZ(0)",
+        transformStyle: "preserve-3d",
+        WebkitTransformStyle: "preserve-3d"
+      }}
     >
       {React.Children.map(children, (child) => (
-        <motion.div variants={itemVariants}>
+        <motion.div
+          variants={itemVariants}
+          style={{
+            willChange: "transform, opacity",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "translateZ(0)",
+            WebkitTransform: "translateZ(0)",
+            transformStyle: "preserve-3d",
+            WebkitTransformStyle: "preserve-3d"
+          }}
+        >
           {child}
         </motion.div>
       ))}

@@ -83,11 +83,19 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease;
+  transition: box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
   border: 1px solid #ecf0f1;
+
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .service-card:hover {

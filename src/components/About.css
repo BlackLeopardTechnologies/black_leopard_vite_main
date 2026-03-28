@@ -103,7 +103,15 @@
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   text-align: center;
   border-top: 0.5rem solid #27ae60;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .vision-card:hover, .mission-card:hover {
