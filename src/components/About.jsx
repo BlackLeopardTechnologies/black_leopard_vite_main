@@ -1,5 +1,7 @@
 import React from "react";
 import "./About.css";
+import ScrollReveal from "./ScrollReveal";
+import StaggerContainer from "./StaggerContainer";
 
 const About = () => {
   const coreValues = [
@@ -37,72 +39,97 @@ const About = () => {
 
   return (
     <section className="about" id="about">
-      <div className="about-overview">
-        <div className="about-text">
-          <h2 className="section-title section-title-left">Who We Are</h2>
+      <ScrollReveal direction="up" delay={0.2}>
+        <div className="about-overview">
+          <div className="about-text">
+            <ScrollReveal direction="left" delay={0.3}>
+              <h2 className="section-title section-title-left">Who We Are</h2>
+            </ScrollReveal>
 
-          <br /> <br/>
-          <p className="highlight-text">
+            <br /> <br/>
+            <ScrollReveal direction="left" delay={0.4}>
+              <p className="highlight-text">
+                Black Leopard Technologies is a registered Ghanaian technology solutions provider headquartered in Koforidua.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal direction="left" delay={0.5}>
+              <p>
+                We deliver end-to-end technology services for businesses, institutions, and individuals. Our focus is digital enablement through
+                reliable implementation and client-centered support.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal direction="left" delay={0.6}>
+              <p>
+                From accounting systems to network and software solutions, we help clients modernize operations and improve service delivery.
+              </p>
+            </ScrollReveal>
+          </div>
+          <ScrollReveal direction="right" delay={0.4}>
+            <div className="about-image">
+              <img src="/images/worldmap.jpg" alt="Global technology reach" />
+            </div>
+          </ScrollReveal>
+        </div>
+      </ScrollReveal>
 
-            Black Leopard Technologies is a registered Ghanaian technology solutions provider headquartered in Koforidua.
-          </p>
-          <p>
-            We deliver end-to-end technology services for businesses, institutions, and individuals. Our focus is digital enablement through
-            reliable implementation and client-centered support.
-          </p>
-          <p>
-            From accounting systems to network and software solutions, we help clients modernize operations and improve service delivery.
-          </p>
+      <ScrollReveal direction="up" delay={0.3}>
+        <div className="vision-mission-section">
+          <div className="section-header">
+            <ScrollReveal direction="up" delay={0.1}>
+              <h2 className="section-title">Our Vision & Mission</h2>
+            </ScrollReveal>
+          </div>
+          <div className="vision-mission-container">
+            <ScrollReveal direction="left" delay={0.2}>
+              <article className="vision-card">
+                <h3>Vision Statement</h3>
+                <p>
+                  To be the leading technology solutions provider across Africa, driving digital transformation and
+                  empowering businesses with innovative technology that creates sustainable growth, operational excellence,
+                  and competitive advantage in an increasingly digital world.
+                </p>
+              </article>
+            </ScrollReveal>
+            <ScrollReveal direction="right" delay={0.3}>
+              <article className="mission-card">
+                <h3>Mission Statement</h3>
+                <p>
+                 We deliver cutting-edge technology solutions, products, and services that enable our clients to optimize their
+                operations, enhance productivity, and achieve their business objectives. Through our commitment to
+                excellence, innovation, and exceptional customer service, we bridge the technology gap and foster digital
+                advancement across Ghana and Africa, one client at a time.
+                </p>
+              </article>
+            </ScrollReveal>
+          </div>
         </div>
-        <div className="about-image">
-          <img src="/images/worldmap.jpg" alt="Global technology reach" />
-        </div>
-      </div>
+      </ScrollReveal>
 
-      <div className="vision-mission-section">
-        <div className="section-header">
-          <h2 className="section-title">Our Vision & Mission</h2>
+      <ScrollReveal direction="up" delay={0.4}>
+        <div className="core-values-section">
+          <div className="section-header">
+            <ScrollReveal direction="up" delay={0.1}>
+              <h2 className="section-title">Our Core Values</h2>
+            </ScrollReveal>
+          </div>
+          <StaggerContainer staggerDelay={0.25}>
+            <div className="values-grid">
+              {coreValues.map((value) => (
+                <article key={value.title} className="value-card">
+                  <div className="value-image-wrapper">
+                    <img src={value.image} alt={value.title} className="value-image" />
+                    <div className="image-overlay-dark"></div>
+                  </div>
+                  <div className="value-content">
+                    <h3>{value.title}</h3>
+                    <p>{value.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </StaggerContainer>
         </div>
-        <div className="vision-mission-container">
-          <article className="vision-card">
-            <h3>Vision Statement</h3>
-            <p>
-              To be the leading technology solutions provider across Africa, driving digital transformation and
-              empowering businesses with innovative technology that creates sustainable growth, operational excellence,
-              and competitive advantage in an increasingly digital world. 
-            </p>
-          </article>
-          <article className="mission-card">
-            <h3>Mission Statement</h3>
-            <p>
-             We deliver cutting-edge technology solutions, products, and services that enable our clients to optimize their
-            operations, enhance productivity, and achieve their business objectives. Through our commitment to
-            excellence, innovation, and exceptional customer service, we bridge the technology gap and foster digital
-            advancement across Ghana and Africa, one client at a time. 
-            </p>
-          </article>
-        </div>
-      </div>
-
-      <div className="core-values-section">
-        <div className="section-header">
-          <h2 className="section-title">Our Core Values</h2>
-        </div>
-        <div className="values-grid">
-          {coreValues.map((value) => (
-            <article key={value.title} className="value-card">
-              <div className="value-image-wrapper">
-                <img src={value.image} alt={value.title} className="value-image" />
-                <div className="image-overlay-dark"></div>
-              </div>
-              <div className="value-content">
-                <h3>{value.title}</h3>
-                <p>{value.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 const NewsLetter = () => {
     const [email, setEmail] = useState("");
@@ -68,21 +69,29 @@ const NewsLetter = () => {
                 </div>
             )}
 
-            <section className="newsletter">
-                <form onSubmit={handleSubmit}>
-                    <h3>Subscribe for latest updates</h3>
+            <ScrollReveal direction="up" delay={0.3}>
+                <section className="newsletter">
+                    <form onSubmit={handleSubmit}>
+                        <ScrollReveal direction="up" delay={0.1}>
+                            <h3>Subscribe for latest updates</h3>
+                        </ScrollReveal>
 
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="enter your email"
-                        className="swiper-slide swiper-slide box"
-                    />
+                        <ScrollReveal direction="up" delay={0.2}>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="enter your email"
+                                className="swiper-slide swiper-slide box"
+                            />
+                        </ScrollReveal>
 
-                    <input type="submit" value="subscribe" className="btn" />
-                </form>
-            </section>
+                        <ScrollReveal direction="up" delay={0.3}>
+                            <input type="submit" value="subscribe" className="btn" />
+                        </ScrollReveal>
+                    </form>
+                </section>
+            </ScrollReveal>
         </>
     );
 };
